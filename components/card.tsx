@@ -12,6 +12,7 @@ const MyComponent = () => {
   useEffect(() => {
     const handleMouseMove = (event) => {
       if (containerRef.current) {
+        // @ts-ignore
         const cards = containerRef.current.querySelectorAll("article");
 
         cards.forEach((card, index) => {
@@ -67,8 +68,8 @@ const MyComponent = () => {
         <article
           key={index}
           style={{
-            "--active": "0.15",
-            "--start": "0",
+            // "--active": "0.15",
+            // "--start": "0",
             height: "100%",
             background: "var(--card)",
             padding: "2rem",
