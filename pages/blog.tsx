@@ -40,9 +40,9 @@ function PostCard(post) {
 
 export default Blog;
 
-export async function getStaticProps() {
-  // const posts = allPosts.sort((a, b) => {
-  //   return compareDesc(new Date(a.date), new Date(b.date))
-  // })
-  // return { props: { posts } }
-}
+// export async function getStaticProps() {
+// const posts = allPosts.sort((a, b) => {
+//   return compareDesc(new Date(a.date), new Date(b.date))
+// })
+// return { props: { posts } }
+// }
