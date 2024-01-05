@@ -1,48 +1,48 @@
-import * as React from 'react'
 import {
   Box,
-  Stack,
-  VStack,
-  SimpleGrid,
-  Heading,
-  Text,
-  Icon,
   Circle,
+  Heading,
+  Icon,
   ResponsiveValue,
-  useMultiStyleConfig,
-  ThemingProps,
+  SimpleGrid,
+  Stack,
   SystemProps,
-} from '@chakra-ui/react'
+  Text,
+  ThemingProps,
+  VStack,
+  useMultiStyleConfig,
+} from "@chakra-ui/react";
+import * as React from "react";
 
-import { Section, SectionTitle, SectionTitleProps } from 'components/section'
+import { Section, SectionTitle, SectionTitleProps } from "components/section";
 
 const Revealer = ({ children }: any) => {
-  return children
-}
+  return children;
+};
 
 export interface FeaturesProps
-  extends Omit<SectionTitleProps, 'title' | 'variant'>,
-    ThemingProps<'Features'> {
-  title?: React.ReactNode
-  description?: React.ReactNode
-  features: Array<FeatureProps>
-  columns?: ResponsiveValue<number>
-  spacing?: string | number
-  aside?: React.ReactChild
-  reveal?: React.FC<any>
-  iconSize?: SystemProps['boxSize']
-  innerWidth?: SystemProps['maxW']
+  extends Omit<SectionTitleProps, "title" | "variant">,
+    ThemingProps<"Features"> {
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  features: Array<FeatureProps>;
+  columns?: ResponsiveValue<number>;
+  spacing?: string | number;
+  aside?: React.ReactChild;
+  reveal?: React.FC<any>;
+  iconSize?: SystemProps["boxSize"];
+  innerWidth?: SystemProps["maxW"];
 }
 
 export interface FeatureProps {
-  title?: React.ReactNode
-  description?: React.ReactNode
-  icon?: any
-  iconPosition?: 'left' | 'top'
-  iconSize?: SystemProps['boxSize']
-  ip?: 'left' | 'top'
-  variant?: string
-  delay?: number
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  icon?: any;
+  iconPosition?: "left" | "top";
+  iconSize?: SystemProps["boxSize"];
+  ip?: "left" | "top";
+  variant?: string;
+  delay?: number;
 }
 
 export const Feature: React.FC<FeatureProps> = (props) => {
@@ -54,26 +54,28 @@ export const Feature: React.FC<FeatureProps> = (props) => {
     iconSize = 8,
     ip,
     variant,
-  } = props
-  const styles = useMultiStyleConfig('Feature', { variant })
-
-  const pos = iconPosition || ip
-  const direction = pos === 'left' ? 'row' : 'column'
+  } = props;
+  const styles = useMultiStyleConfig("Feature", { variant });
 
   return (
-    <Stack sx={styles.container} direction={direction}>
-      {icon && (
-        <Circle sx={styles.icon}>
-          <Icon as={icon} boxSize={iconSize} />
-        </Circle>
-      )}
-      <Box>
-        <Heading sx={styles.title}>{title}</Heading>
-        <Text sx={styles.description}>{description}</Text>
-      </Box>
+    <Stack sx={styles.container}>
+      <Heading
+        sx={styles.title}
+        display="flex"
+        alignItems="center"
+        columnGap="2"
+      >
+        {icon && (
+          <Circle sx={styles.icon}>
+            <Icon as={icon} boxSize={iconSize} />
+          </Circle>
+        )}
+        {title}
+      </Heading>
+      <Text style={{ marginInlineStart: "0px" }}>{description}</Text>
     </Stack>
-  )
-}
+  );
+};
 
 export const Features: React.FC<FeaturesProps> = (props) => {
   const {
@@ -81,21 +83,21 @@ export const Features: React.FC<FeaturesProps> = (props) => {
     description,
     features,
     columns = [1, 2, 3],
-    spacing = 8,
-    align: alignProp = 'center',
+    spacing = [14, null, 12],
+    align: alignProp = "center",
     iconSize = 8,
     aside,
     reveal: Wrap = Revealer,
     ...rest
-  } = props
+  } = props;
 
-  const align = !!aside ? 'left' : alignProp
+  const align = !!aside ? "left" : alignProp;
 
-  const ip = align === 'left' ? 'left' : 'top'
+  const ip = align === "left" ? "left" : "top";
 
   return (
     <Section {...rest}>
-      <Stack direction="row" height="full" align="flex-start">
+      <Stack direction="column" height="full" align="flex-start">
         <VStack flex="1" spacing={[4, null, 8]} alignItems="stretch">
           {(title || description) && (
             <Wrap>
@@ -112,7 +114,7 @@ export const Features: React.FC<FeaturesProps> = (props) => {
                 <Wrap key={i} delay={feature.delay}>
                   <Feature iconSize={iconSize} {...feature} ip={ip} />
                 </Wrap>
-              )
+              );
             })}
           </SimpleGrid>
         </VStack>
@@ -123,5 +125,5 @@ export const Features: React.FC<FeaturesProps> = (props) => {
         )}
       </Stack>
     </Section>
-  )
-}
+  );
+};

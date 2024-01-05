@@ -1,28 +1,18 @@
-import * as React from 'react'
-import { Box, Flex, Heading, VisuallyHidden } from '@chakra-ui/react'
-import { Link } from '@saas-ui/react'
+import * as React from "react";
+import { Box, Flex, Heading, VisuallyHidden } from "@chakra-ui/react";
+import { Link } from "@saas-ui/react";
 
 export interface LogoProps {
-  href?: string
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
+  href?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-import siteConfig from 'data/config'
+import siteConfig from "data/config";
+import Image from "next/image";
 
-export const Logo = ({ href = '/', onClick }: LogoProps) => {
-  let logo
-  if (siteConfig.logo) {
-    logo = <Box as={siteConfig.logo} height="32px" mt="-4px" />
-  } else {
-    logo = (
-      <Heading as="h1" size="md">
-        {siteConfig.seo?.title}
-      </Heading>
-    )
-  }
-
+export const Logo = ({ href = "/", onClick }: LogoProps) => {
   return (
-    <Flex h="8" flexShrink="0" alignItems="flex-start">
+    <Flex h="auto" flexShrink="0" alignItems="flex-start">
       <Link
         href={href}
         display="flex"
@@ -30,9 +20,15 @@ export const Logo = ({ href = '/', onClick }: LogoProps) => {
         borderRadius="sm"
         onClick={onClick}
       >
-        {logo}
+        <Image
+          src="/static/images/image.png"
+          alt="Hero"
+          width="100"
+          height="50"
+          style={{ background: "transparent" }}
+        />
         <VisuallyHidden>{siteConfig.seo?.title}</VisuallyHidden>
       </Link>
     </Flex>
-  )
-}
+  );
+};

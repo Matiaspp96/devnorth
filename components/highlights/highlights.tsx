@@ -6,10 +6,8 @@ import {
   GridItem,
   GridItemProps,
   Heading,
-  Text,
   useColorModeValue,
   useTheme,
-  VStack,
 } from "@chakra-ui/react";
 import { transparentize } from "@chakra-ui/theme-tools";
 import { Section, SectionProps } from "components/section";

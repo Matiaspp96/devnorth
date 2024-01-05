@@ -1,8 +1,6 @@
 import * as React from "react";
 import { HStack } from "@chakra-ui/react";
 
-import { useRouter } from "next/router";
-
 import siteConfig from "data/config";
 
 import { NavLink } from "components/nav-link";
@@ -17,7 +15,6 @@ import ThemeToggle from "./theme-toggle";
 
 const Navigation: React.FC = () => {
   const mobileNav = useDisclosure();
-  const router = useRouter();
   const activeId = useScrollSpy(
     siteConfig.header.links
       .filter(({ id }) => id)
@@ -41,12 +38,7 @@ const Navigation: React.FC = () => {
             display={["none", null, "block"]}
             href={href || `/#${id}`}
             key={i}
-            isActive={
-              !!(
-                (id && activeId === id) ||
-                (href && !!router.asPath.match(new RegExp(href)))
-              )
-            }
+            isActive={!!((id && activeId === id) || href)}
             {...props}
           >
             {props.label}

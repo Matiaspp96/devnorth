@@ -66,8 +66,6 @@ export const Feature = {
       color: mode('gray.500', 'gray.400')(props),
     },
     icon: {
-      mb: 4,
-      mr: 4,
       p: 2,
       bg: mode(
         'primary.100',
@@ -81,7 +79,7 @@ export const Feature = {
     default: {},
     'left-icon': {
       container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
       },
     },
     center: {
@@ -97,19 +95,14 @@ export const Feature = {
     },
     inline: {
       container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
       },
       title: {
         display: 'inline-block',
         mr: 1,
         mb: 0,
       },
-      description: {
-        display: 'inline',
-      },
-      icon: {
-        mt: 4,
-      },
+
     },
     light: ({ colorMode }: any) => ({
       wrapper: {
