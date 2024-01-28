@@ -7,7 +7,6 @@ import {
   Text,
   VStack,
   Wrap,
-  useClipboard,
 } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import type { NextPage } from "next";
@@ -19,7 +18,6 @@ import { Features } from "components/features";
 import { BackgroundGradient } from "components/gradients/background-gradient";
 import { Hero } from "components/hero";
 import { FallInPlace } from "components/motion/fall-in-place";
-import { Pricing } from "components/pricing/pricing";
 import { Em } from "components/typography";
 import {
   FiClock,
@@ -39,7 +37,6 @@ import {
 import { Testimonial, Testimonials } from "components/testimonials";
 
 import faq from "data/faq";
-import pricing from "data/pricing";
 import testimonials from "data/testimonials";
 
 import {
@@ -47,7 +44,8 @@ import {
   HighlightsItem,
   HighlightsTestimonialItem,
 } from "components/highlights";
-import MyComponent from "components/card";
+import GlowingCards from "components/card";
+import TestimonialCarousel from "components/highlights/testimonialscarousel";
 
 const Home: NextPage = () => {
   return (
@@ -64,7 +62,6 @@ const Home: NextPage = () => {
         <FeaturesSection />
 
         <FaqSection />
-        <MyComponent />
       </Box>
     </Box>
   );
@@ -163,78 +160,69 @@ const HeroSection: React.FC = () => {
 };
 
 const HighlightsSection = () => {
-  const { value, onCopy, hasCopied } = useClipboard("yarn add @saas-ui/react");
-
   return (
     <Highlights>
-      <HighlightsItem
-        colSpan={[1, null, 2]}
-        title="Experiencia que inspira confianza"
-      >
-        <VStack alignItems="flex-start" spacing="8">
-          <Text color="muted" fontSize="xl">
-            Con un enfoque centrado en el usuario, creamos aplicaciones que van
-            más allá de la funcionalidad, ofreciendo experiencias memorables que
-            generan confianza. Con un equipo experto, transformamos ideas en
-            soluciones robustas y fiables que elevan su marca y conectan
-            emocionalmente con sus usuarios.
+      <GlowingCards colSpan={[1, null, 2]}>
+        <HighlightsItem title="Experiencia que inspira confianza">
+          <VStack alignItems="flex-start" spacing="8">
+            <Text color="muted" fontSize="xl">
+              Con un enfoque centrado en el usuario, creamos aplicaciones que
+              van más allá de la funcionalidad, ofreciendo experiencias
+              memorables que generan confianza. Con un equipo experto,
+              transformamos ideas en soluciones robustas y fiables que elevan su
+              marca y conectan emocionalmente con sus usuarios.
+            </Text>
+          </VStack>
+        </HighlightsItem>
+      </GlowingCards>
+      <GlowingCards>
+        <HighlightsItem title="Potencie su proyecto">
+          <Text color="muted" fontSize="lg">
+            Ahorrará valiosas horas en la construcción de funciones esenciales
+            para su proyecto. Este tiempo puede destinarse a validar nuevas
+            ideas y encontrar el ajuste perfecto en el mercado.
           </Text>
-        </VStack>
-      </HighlightsItem>
-      <HighlightsItem title="Potencie su proyecto">
-        <Text color="muted" fontSize="lg">
-          Ahorrará valiosas horas en la construcción de funciones esenciales
-          para su proyecto. Este tiempo puede destinarse a validar nuevas ideas
-          y encontrar el ajuste perfecto en el mercado.
-        </Text>
-      </HighlightsItem>
-      <HighlightsTestimonialItem
-        name="Matias Palomo"
-        description="Co-Founder"
-        avatar="/static/images/avatar.jpg"
-        gradient={["pink.200", "purple.500"]}
-      >
-        “DevNorth helped us set up a beautiful modern UI in no time. It saved us
-        hundreds of hours in development time and allowed us to focus on
-        business logic for our specific use-case from the start.”
-      </HighlightsTestimonialItem>
-      <HighlightsItem
-        colSpan={[1, null, 2]}
-        title="Soporte y mantenimiento integral de Software y Hardware"
-      >
-        <Text color="muted" fontSize="lg">
-          En <Em>DevNorth</Em>, comprendemos que el ciclo de vida de un producto
-          no termina con su lanzamiento, sino que es esencial mantener un
-          soporte continuo y un mantenimiento integral para garantizar su
-          funcionamiento óptimo a lo largo del tiempo.
-        </Text>
-        <Wrap mt="8">
-          {[
-            "soporte",
-            "mantenimiento",
-            "desarrollo",
-            "web",
-            "mobile",
-            "apps",
-            "base de datos",
-            "seguridad",
-            "servidores",
-            "cloud",
-            "blockchain",
-            "redes",
-          ].map((value) => (
-            <Tag
-              key={value}
-              variant="subtle"
-              colorScheme="purple"
-              rounded="full"
-              px="3"
-            >
-              {value}
-            </Tag>
-          ))}
-        </Wrap>
-      </HighlightsItem>
+        </HighlightsItem>
+      </GlowingCards>
+      <GlowingCards>
+        <TestimonialCarousel></TestimonialCarousel>
+      </GlowingCards>
+      <GlowingCards colSpan={[1, null, 2]}>
+        <HighlightsItem title="Soporte y mantenimiento integral de Software y Hardware">
+          <Text color="muted" fontSize="lg">
+            En <Em>DevNorth</Em>, comprendemos que el ciclo de vida de un
+            producto no termina con su lanzamiento, sino que es esencial
+            mantener un soporte continuo y un mantenimiento integral para
+            garantizar su funcionamiento óptimo a lo largo del tiempo.
+          </Text>
+          <Wrap mt="8">
+            {[
+              "soporte",
+              "mantenimiento",
+              "desarrollo",
+              "web",
+              "mobile",
+              "apps",
+              "base de datos",
+              "seguridad",
+              "servidores",
+              "cloud",
+              "blockchain",
+              "redes",
+            ].map((value) => (
+              <Tag
+                key={value}
+                variant="subtle"
+                colorScheme="purple"
+                rounded="full"
+                px="3"
+              >
+                {value}
+              </Tag>
+            ))}
+          </Wrap>
+        </HighlightsItem>
+      </GlowingCards>
     </Highlights>
   );
 };

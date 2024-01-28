@@ -32,13 +32,13 @@ const Navigation: React.FC = () => {
 
   return (
     <HStack spacing="2" flexShrink={0}>
-      {siteConfig.header.links.map(({ href, id, ...props }, i) => {
+      {siteConfig.header.links.map(({ id, ...props }, i) => {
         return (
           <NavLink
             display={["none", null, "block"]}
-            href={href || `/#${id}`}
+            href={`/#${id}`}
             key={i}
-            isActive={!!((id && activeId === id) || href)}
+            isActive={!!(id && activeId === id)}
             {...props}
           >
             {props.label}

@@ -5,6 +5,7 @@ import { SaasProvider } from "@saas-ui/react";
 import { Layout } from "components/layout";
 
 import theme from "../theme";
+import "../components/Card.css"; // Importa tus estilos
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { announcement, header, footer } = pageProps;
