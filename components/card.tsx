@@ -111,12 +111,14 @@ const GlowingCards: React.FC<GlowingCardsProps> = ({ children, colSpan }) => {
         }}
       >
         <Box
+          display={["none", "block"]}
           className="glows"
           position="absolute"
           inset="0"
           filter={`blur(${CONFIG.blur}px)`}
         ></Box>
         <Box
+          display={["none", "block"]}
           className="glows"
           position="absolute"
           inset="-5px"
@@ -131,6 +133,7 @@ const GlowingCards: React.FC<GlowingCardsProps> = ({ children, colSpan }) => {
           transition="opacity 1s"
         ></Box>
         <Box
+          display={["none", "block"]}
           className="glows"
           position="absolute"
           inset="0"
@@ -146,6 +149,7 @@ const GlowingCards: React.FC<GlowingCardsProps> = ({ children, colSpan }) => {
           transition="opacity 1s"
         ></Box>
         <Box
+          display={["none", "block"]}
           className="glows"
           position="absolute"
           inset="0"
