@@ -50,7 +50,9 @@ const GlowingCards: React.FC<GlowingCardsProps> = ({ children, colSpan }) => {
       }
     };
 
-    document.body.addEventListener("pointermove", update);
+    if (window.innerWidth > 768) {
+      document.body.addEventListener("pointermove", update);
+    }
 
     const restyle = () => {
       const container = containerRef.current;
